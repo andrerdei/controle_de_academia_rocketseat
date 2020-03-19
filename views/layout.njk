@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% block head_content %}{% endblock %}
+    
+</head>
+
+<body>
+    <header>
+        <nav class="menu-navegacao">
+            <ul>
+                <li><a href="/">Instructors</a></li>
+                <li><a href="/members">Members</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    {% block body_main_content %}{% endblock %}
+    
+    <footer>
+
+    </footer>
+
+    {% block scripts_content %}{% endblock %}
+
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+/* Estilos Básicos do Corpo */
+
+body{
+    width: 100vw;
+    height: 100vh;
+    color: rgba(255,255,255,.8);
+    background-color: #282a36;
+    font-family: "Roboto", sans serif;
+    font-size: 16px;
+    line-height: 28px;
+    overflow-x: hidden;
+}
+
+body h1{
+    font-size: 240%;
+    font-weight: bold;
+    margin: .3em;
+}
+
+body h2{
+    font-size: 180%;
+    font-weight: bold;
+    margin: .2em;
+}
+
+body h3{
+    font-size: 130%;
+    font-weight: bold;
+}
+
+body ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+body a{
+    text-decoration: none;
+}
+
+
+/* wrapper */
+
+.wrapper{
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
