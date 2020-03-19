@@ -2,27 +2,52 @@
 
 .menu-navegacao{
     width: 100%;
-    height: 3em;
+    min-height: 5em;
     background-color: white;
     font-size: 24px;
-    font-weight: bold;
     line-height: 35px;
-    box-shadow: inset 0px 0px 8px 1px black;
+    box-shadow: inset 0px 0px 4px 1px black;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.menu-navegacao ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 .menu-navegacao li{
     display: inline-block;
+    margin: .1em
 }
 
 .menu-navegacao a{
     color: rgba(0,0,0,.6);
-    padding: 1em;
+    margin: 1em;
+    position: relative;
 }
 
-.menu-navegacao a:hover{
-    color: goldenrod;
-    transition: color .2s;
+.menu-navegacao a::after{
+    content: "";
+    width: 0%;
+    height: .05em;
+    background-color: var(--primary-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: width .5s cubic-bezier(0.42, 0, 0.19, 1.06);
+}
+
+@media(hover: hover){
+    .menu-navegacao a:hover::after{
+        width: 100%;
+    }
+}
+
+.menu-navegacao .active{
+    color: var(--primary-color);
+    font-weight: bold;
 }

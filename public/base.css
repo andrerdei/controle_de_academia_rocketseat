@@ -1,10 +1,14 @@
 /* Estilos Básicos do Corpo */
 
+:root {
+    --primary-color: #7159c1;
+}
+
 body{
     width: 100vw;
     height: 100vh;
     color: rgba(255,255,255,.8);
-    background-color: #282a36;
+    background-color: var(--primary-color);
     font-family: "Roboto", sans serif;
     font-size: 16px;
     line-height: 28px;
@@ -36,6 +40,32 @@ body ul{
 
 body a{
     text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    -khtml-tap-highlight-color: transparent;
+    -moz-tap-highlight-color: transparent;
+    -ms-tap-highlight-color: transparent;
+}
+
+body img{
+    -webkit-tap-highlight-color: transparent;
+    -khtml-tap-highlight-color: transparent;
+    -moz-tap-highlight-color: transparent;
+    -ms-tap-highlight-color: transparent;
+}
+
+body input{
+    -webkit-tap-highlight-color: transparent;
+    -khtml-tap-highlight-color: transparent;
+    -moz-tap-highlight-color: transparent;
+    -ms-tap-highlight-color: transparent;
+}
+
+body:focus{
+    outline: none;
+}
+
+body input:focus{
+    outline: none;
 }
 
 
