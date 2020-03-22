@@ -1,0 +1,48 @@
+{% extends "layout.njk" %}
+
+{% block head_content %}
+    <title>Gym</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/form.css">
+{% endblock head_content %}
+
+
+{% block body_main_content %}
+    <main>
+        <form class="card" method="POST" action="/instructors">
+            <div class="avatar">
+                
+            </div>
+            <div class="details">
+                <h3>Novo Instrutor</h3>
+                <div class="item">
+                    <div>Avatar URL</div>
+                    <input type="url" name="avatar_url" placeholder="http://" required>
+                </div>
+                <div class="item">
+                    <div>Instrutor</div>
+                    <input type="text" name="name" placeholder="Digite seu nome" required>
+                </div>
+                <div class="item">
+                    <div>Data de Nascimento</div>
+                    <input type="date" name="birth" required>
+                </div>
+                <div class="item">
+                    <div>Sexo</div>
+                    <ul>
+                        <li><input type="radio" name="gender" value="M" checked>Masculino</li>
+                        <li><input type="radio" name="gender" value="F">Feminino</li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <div>Área de Atuação</div>
+                    <input type="text" name="services" placeholder="Separe os serviços oferecidos por vírgula" required>
+                </div>
+                <button type="submit">Salvar</button>
+            </div>
+        </form>
+    </main>
+{% endblock body_main_content%}

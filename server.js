@@ -9,6 +9,7 @@ const server = express()
 
 // Configurando Middlewares
 
+server.use(express.urlencoded({extended: true}))
 server.use(express.static('public'))
 server.use(routes)
 
