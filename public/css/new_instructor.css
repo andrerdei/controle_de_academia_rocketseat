@@ -154,7 +154,9 @@
 
 .details .item input[type="radio"]{
     width: initial;
-    margin-right: .2em;
+    margin-right: .3em;
+    margin-bottom: .4em;
+    vertical-align: middle;
 }
 
 .details .item input::placeholder{

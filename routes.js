@@ -1,37 +1,30 @@
 // Declarando Variáveis (require)
 
 const express = require('express')
+
+const instructors = require('./controllers/instructors')
+
 const routes = express.Router()
 
 
 // Configurando Rotas (get)
 
 routes.get("/", (req, res) => {
-    return res.render("instructors")
+    return res.redirect("/instructors")
 })
 
 routes.get("/instructors", (req, res) => {
-    return res.render("instructors/index")
+    return res.render("instructors/instructors_list")
 })
 
-routes.get("/instructors/create", (req, res) => {
-    return res.render("instructors/create")
+routes.get("/instructors/new", (req, res) => {
+    return res.render("instructors/new_instructor")
 })
 
 
 // Configurando Rotas (post)
 
-routes.post("/instructors", (req, res) => {
-    const keys = Object.keys(req.body)
-
-    for(key of keys){
-        if(req.body[key] == ""){
-            return res.send("Preencha Todos os Campos!")
-        }
-    }
-
-    return res.send(req.body)
-})
+routes.post("/instructors", instructors.create)
 
 
 // Exportando Módulo
