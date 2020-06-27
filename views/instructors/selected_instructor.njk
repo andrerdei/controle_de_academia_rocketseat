@@ -1,0 +1,48 @@
+{% extends "layout.njk" %}
+
+{% block head_content %}
+    <title>Gym</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/menu.css">
+    <link rel="stylesheet" href="/css/selected_instructor.css">
+{% endblock head_content %}
+
+
+{% block body_main_content %}
+    <main>
+        <section class="card">
+            <div class="avatar">
+                
+            </div>
+            <div class="details">
+                <h3>Detalhes</h3>
+                <div class="item">
+                    <div>Instrutor</div>
+                    <div>{{instructor.name}}</div>
+                </div>
+                <div class="item">
+                    <div>Sexo</div>
+                    <div>{{instructor.gender}}</div>
+                </div>
+                <div class="item">
+                    <div>Idade</div>
+                    <div>{{instructor.birth}}</div>
+                </div>
+                <div class="item">
+                    <div>Acompanhamento</div>
+                    <ul>
+                        {% for service in instructor.services %}
+                            <li>{{service}}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="item">
+                    <div>Desde</div>
+                    <div>{{instructor.created_at}}</div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock body_main_content%}

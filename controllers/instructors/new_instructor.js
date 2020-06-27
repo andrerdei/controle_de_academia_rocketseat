@@ -1,12 +1,16 @@
 // Declarando Variáveis Globais (require)
 
 const fs = require('fs')
-const data = require('../data.json')
+const data = require('../../data.json')
 
 
-// Exportando Módulo Com os Controllers
+// Exportando Módulo Com o Controller
 
 module.exports = {
+    async index (req, res) {
+        return res.render("instructors/new_instructor")
+    },
+
     async create(req, res) {
         const keys = Object.keys(req.body)
 
@@ -15,6 +19,10 @@ module.exports = {
                 return res.send("Preencha Todos os Campos!")
             }
         }
+
+        if(!data.instructors) {
+            return res.send("A lista de instrutores ainda não foi criada")
+        } // Verificar esta condicional após criação do banco de dados
 
         let {avatar_url, name, birth, gender, services} = req.body
         const id = Number(data.instructors.length + 1)
@@ -36,8 +44,8 @@ module.exports = {
             if(err){
                 return res.send("Erro na escrita do arquivo")
             }
-        
-            return res.redirect('/instructors')
+
+            return res.redirect("/instructors")
         })
     }
 }

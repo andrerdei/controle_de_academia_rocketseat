@@ -1,30 +1,27 @@
-// Declarando Variáveis (require)
+// Declarando Variáveis Globais (require)
 
 const express = require('express')
 
-const instructors = require('./controllers/instructors')
+const home_page = require('./controllers/home_page')
+
+const instructors_list = require('./controllers/instructors/instructors_list')
+const new_instructor = require('./controllers/instructors/new_instructor')
+const selected_instructor = require('./controllers/instructors/selected_instructor')
 
 const routes = express.Router()
 
 
-// Configurando Rotas (get)
+// Configurando Rotas
 
-routes.get("/", (req, res) => {
-    return res.redirect("/instructors")
-})
+routes.get("/", home_page.redirect)
 
-routes.get("/instructors", (req, res) => {
-    return res.render("instructors/instructors_list")
-})
+routes.get("/instructors", instructors_list.index)
 
-routes.get("/instructors/new", (req, res) => {
-    return res.render("instructors/new_instructor")
-})
+routes.get("/instructors/new", new_instructor.index)
+routes.post("/instructors/new", new_instructor.create)
 
-
-// Configurando Rotas (post)
-
-routes.post("/instructors", instructors.create)
+routes.get("/instructors/selected_instructor", selected_instructor.redirect)
+routes.get("/instructors/selected_instructor/:id", selected_instructor.index)
 
 
 // Exportando Módulo
