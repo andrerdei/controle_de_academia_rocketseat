@@ -12,8 +12,9 @@ const {dateConverter} = require('../../utils/date_converter')
 
 module.exports = {
     async redirect(req, res) {
-        return res.redirect("selected_instructor/1")
+        return res.redirect("edit_instructor/1")
     },
+
     async index(req, res) {
         const {id} = req.params
 
@@ -34,6 +35,6 @@ module.exports = {
             created_at: dateConverter(findInstructor.created_at)
         }
         
-        return res.render("instructors/selected_instructor", {instructor: instructor})
+        return res.render("instructors/edit_instructor", {instructor: instructor})
     }
 }
