@@ -15,7 +15,7 @@ module.exports = {
         const keys = Object.keys(req.body)
 
         for(key of keys){
-            if(req.body[key] == ""){
+            if(req.body[key] == "" || req.body.gender == undefined) {
                 return res.send("Preencha Todos os Campos!")
             }
         }

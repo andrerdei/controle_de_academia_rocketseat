@@ -12,15 +12,39 @@
 
 {% block body_main_content %}
     <main>
-        <form class="card" method="POST" action="/instructors/new">
+        <div class="card">
             <div class="avatar">
-                
+                    
             </div>
+
             <div class="details">
-                <h3>Editar Instrutor</h3>
-                
-                {% include "./includes/form_fields.njk" %}
+                <form class="edit-form" method="POST" action="/instructors/edit_instructor?_method=PUT">
+                    <h3>Editar Instrutor</h3>
+                    
+                    {% include "./includes/form_fields.njk" %}
+
+                    <input
+                        type="hidden"
+                        name="id"
+                        value="{{instructor.id}}"
+                    >
+                </form>
+
+                <form class="delete-form" method="POST" action="/instructors/edit_instructor?_method=DELETE">
+                    <input
+                        type="hidden"
+                        name="id"
+                        value="{{instructor.id}}"
+                    >
+
+                    <button
+                        class="tertiary-color-button"
+                        type="submit"
+                    >
+                    Deletar
+                    </button>
+                </form>
             </div>
-        </form>
+        </div>
     </main>
 {% endblock body_main_content%}

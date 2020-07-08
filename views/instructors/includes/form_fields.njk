@@ -2,25 +2,77 @@
 
 <div class="item">
     <div>Avatar URL</div>
-    <input type="url" name="avatar_url" placeholder="http://" required>
+    <input
+        type="url"
+        name="avatar_url"
+        placeholder="http://"
+        value="{{instructor.avatar_url}}"
+        required
+    >
 </div>
 <div class="item">
     <div>Instrutor</div>
-    <input type="text" name="name" placeholder="Digite seu nome" required>
+    <input
+        type="text"
+        name="name"
+        placeholder="Digite seu nome"
+        value="{{instructor.name}}"
+        required
+    >
 </div>
 <div class="item">
     <div>Data de Nascimento</div>
-    <input type="date" name="birth" required>
+    <input
+        type="date"
+        name="birth"
+        value="{{instructor.birth}}"
+        required
+    >
 </div>
 <div class="item">
     <div>Sexo</div>
     <ul>
-        <li><input type="radio" name="gender" value="M" checked>Masculino</li>
-        <li><input type="radio" name="gender" value="F">Feminino</li>
+        <li>
+            <input
+                type="radio"
+                name="gender"
+                value="M"
+
+                {% if instructor.gender == "Masculino" %}
+                    checked
+                {% endif %}
+
+                required
+            >
+            Masculino
+        </li>
+        <li>
+            <input
+                type="radio"
+                name="gender"
+                value="F"
+
+                {% if instructor.gender == "Feminino" %}
+                    checked
+                {% endif %}
+            >
+            Feminino
+        </li>
     </ul>
 </div>
 <div class="item">
     <div>Área de Atuação</div>
-    <input type="text" name="services" placeholder="Separe os serviços oferecidos por vírgula" required>
+    <input
+        type="text"
+        name="services"
+        placeholder="Separe os serviços oferecidos por vírgula"
+        value="{{instructor.services}}"
+        required
+    >
 </div>
-<button type="submit">Salvar</button>
+<button
+    class="primary-color-button"
+    type="submit"
+>
+Salvar
+</button>

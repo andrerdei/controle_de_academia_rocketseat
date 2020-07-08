@@ -26,6 +26,8 @@ routes.get("/instructors/selected_instructor/:id", selected_instructor.index)
 
 routes.get("/instructors/edit_instructor", edit_instructor.redirect)
 routes.get("/instructors/edit_instructor/:id", edit_instructor.index)
+routes.put("/instructors/edit_instructor", edit_instructor.update)
+routes.delete("/instructors/edit_instructor", edit_instructor.delete)
 
 
 // Exportando Módulo

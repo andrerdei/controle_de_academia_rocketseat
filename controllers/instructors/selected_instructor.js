@@ -15,6 +15,10 @@ module.exports = {
         return res.redirect("selected_instructor/1")
     },
     async index(req, res) {
+        if(!data.instructors) {
+            return res.send("A lista de instrutores ainda não foi criada")
+        } // Verificar esta condicional após criação do banco de dados
+        
         const {id} = req.params
 
         const findInstructor = data.instructors.find((instructor) => {

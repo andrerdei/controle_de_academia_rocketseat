@@ -91,15 +91,25 @@
 
 .details button{
     width: 100%;
-    color: white;
-    background-color: var(--primary-color);
     font-size: 100%;
     font-weight: bold;
-    margin-top: 2em;
     padding: .8em 0;
     border-radius: 5px;
     border: none;
     cursor: pointer;
+}
+
+.details .primary-color-button{
+    color: white;
+    background-color: var(--primary-color);
+    margin-top: 2em;
+}
+
+
+.details .tertiary-color-button{
+    color: white;
+    background-color: var(--tertiary-color);
+    margin-top: .8em;
 }
 
 @media(hover: hover){

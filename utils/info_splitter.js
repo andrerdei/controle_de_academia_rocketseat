@@ -7,5 +7,13 @@ module.exports = {
 
     infoDashSplitter(info) {
         return info.split("-")
-     }
+     },
+
+     infoQuotationMarksSplitter(info) {
+      return info.split('"')
+   },
+
+     infoTimeSplitter(info) {
+      return info.split("T")
+   }
 }

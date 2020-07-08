@@ -6,7 +6,7 @@ module.exports = {
         const newDate = new Date(calculate)
     
         const age = newDate.getUTCFullYear() - 1970
-    
+
         return Math.abs(age)
     }
 }

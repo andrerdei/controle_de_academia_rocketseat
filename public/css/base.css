@@ -3,6 +3,7 @@
 :root {
     --primary-color: darkorange;
     --secondary-color: #f7df1e;
+    --tertiary-color: rgb(255, 0, 38);
 }
 
 body{
@@ -66,6 +67,10 @@ body:focus{
 }
 
 body input:focus{
+    outline: none;
+}
+
+body button:focus{
     outline: none;
 }
 

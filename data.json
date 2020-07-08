@@ -1,12 +1,12 @@
 {
     "instructors": [
         {
-            "id": 1,
-            "avatar_url": "http://dagdagadg",
+            "id": "1",
+            "avatar_url": "http://fasdgfdgfgd",
             "name": "André Matos Erdei",
             "birth": 810691200000,
             "gender": "M",
-            "services": "wing chun, corrida, etc",
+            "services": "wing chun, corrida",
             "created_at": 1593099747464
         },
         {
@@ -28,22 +28,13 @@
             "created_at": 1593099808497
         },
         {
-            "id": 4,
+            "id": "4",
             "avatar_url": "http://dagdagadg",
             "name": "G",
             "birth": -315619200000,
             "gender": "M",
             "services": "dag",
             "created_at": 1593183522697
-        },
-        {
-            "id": 5,
-            "avatar_url": "http://dagdagadg",
-            "name": "valk shield",
-            "birth": 478310400000,
-            "gender": "F",
-            "services": "adfdafadfadfad",
-            "created_at": 1593272660047
         }
     ]
 }
