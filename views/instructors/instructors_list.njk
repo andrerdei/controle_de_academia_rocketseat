@@ -6,14 +6,35 @@
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/menu.css">
-    <link rel="stylesheet" href="/css/selected_instructor.css">
+    <link rel="stylesheet" href="/css/instructors_list.css">
 {% endblock head_content %}
 
 
 {% block body_main_content %}
     <main>
         <section class="card">
-            <h1>Aqui será a lista de instrutores</h1>
+
+            {% for instructor in instructors %}
+                <a href="/instructors/selected_instructor/{{instructor.id}}">
+                    <ul class="details">
+                        <li class="item avatar">
+                            <img
+                                src="{{instructor.avatar_url}}"
+                                alt="Imagem do Instrutor"
+                            >
+                        </li>
+                        <li class="item text-info">
+                            <span>Nome:</span>
+                            {{instructor.name}}
+                        </li>
+                        <li class="item text-info">
+                           <span>Acompanhamento:</span>
+                           {{instructor.services}}
+                        </li>
+                    </ul>
+                </a>
+            {% endfor %}
+
         </section>
     </main>
 {% endblock body_main_content%}

@@ -69,22 +69,23 @@ module.exports = {
             ...findInstructor,
             ...req.body,
 
-            birth: Date.parse(birth)
+            birth: Date.parse(birth),
+            id: parseInt(req.body.id)
         }
-
+        
         fs.writeFile("data.json", JSON.stringify(data, null, 4), (err) => {
             if(err){
                 return res.send("Erro na escrita do arquivo")
             }
-
-            return res.redirect(`/instructors/selected_instructor/${id}`)
         })
+        
+        res.redirect(`/instructors/selected_instructor/${id}`)
     },
 
     async delete(req, res) {
         const {id} = req.body
 
-        const filterInstructors = data.instructors.filter((instructor, currentIndex) => {
+        const filterInstructors = data.instructors.filter((instructor) => {
             return instructor.id != id
         })
 
@@ -94,8 +95,8 @@ module.exports = {
             if(err) {
                 return res.send("Erro na escrita do arquivo")
             }
-
-            return res.redirect("/instructors")
         })
+
+        return res.redirect("/instructors")
     }
 }

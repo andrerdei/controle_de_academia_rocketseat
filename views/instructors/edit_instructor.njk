@@ -14,11 +14,11 @@
     <main>
         <div class="card">
             <div class="avatar">
-                    
+                    <img src="{{instructor.avatar_url}}" alt="Imagem do Instrutor">
             </div>
 
             <div class="details">
-                <form class="edit-form" method="POST" action="/instructors/edit_instructor?_method=PUT">
+                <form id="edit-form" method="POST" action="/instructors/edit_instructor?_method=PUT">
                     <h3>Editar Instrutor</h3>
                     
                     {% include "./includes/form_fields.njk" %}
@@ -30,7 +30,7 @@
                     >
                 </form>
 
-                <form class="delete-form" method="POST" action="/instructors/edit_instructor?_method=DELETE">
+                <form id="delete-form" method="POST" action="/instructors/edit_instructor?_method=DELETE">
                     <input
                         type="hidden"
                         name="id"
@@ -38,7 +38,7 @@
                     >
 
                     <button
-                        class="tertiary-color-button"
+                        class="tertiary-color-button form-button"
                         type="submit"
                     >
                     Deletar
@@ -47,4 +47,14 @@
             </div>
         </div>
     </main>
+
+    <script>
+        function formHandler(form) {
+            const selectedForm = document.getElementById(form)
+
+            selectedForm.addEventListener("submit", (event) => {
+                event.preventDefault()
+            })
+        }
+    </script>
 {% endblock body_main_content%}

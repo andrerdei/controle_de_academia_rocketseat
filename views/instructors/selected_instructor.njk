@@ -14,7 +14,7 @@
     <main>
         <section class="card">
             <div class="avatar">
-                
+                <img src="{{instructor.avatar_url}}" alt="Imagem do Instrutor">
             </div>
             <div class="details">
                 <h3>Detalhes</h3>
@@ -33,9 +33,11 @@
                 <div class="item">
                     <div>Acompanhamento</div>
                     <ul>
+
                         {% for service in instructor.services %}
                             <li>{{service}}</li>
                         {% endfor %}
+                        
                     </ul>
                 </div>
                 <div class="item">
