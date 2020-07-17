@@ -1,22 +1,24 @@
-/* Estilos Básicos do Corpo */
+/* Variáveis de Cor */
 
-:root {
+:root{
     --primary-color: darkorange;
     --secondary-color: #f7df1e;
     --tertiary-color: rgb(255, 0, 38);
+    --quaternary-color: rgb(89, 89, 207);
 }
+
+
+/* Estilos Básicos do Corpo */
 
 body{
     width: 100vw;
     height: 100vh;
-    color: rgba(255,255,255,.8);
-    background-color: var(--primary-color);
-    font-family: "Roboto", sans serif;
+    color: rgba(0,0,0,.6);
+    font-family: "Roboto", "sans serif";
     font-size: 16px;
     line-height: 28px;
     overflow-x: hidden;
     z-index: -10;
-
 }
 
 body h1{
@@ -74,18 +76,4 @@ body input:focus{
 
 body button:focus{
     outline: none;
-}
-
-
-/* wrapper */
-
-.wrapper{
-    width: 80%;
-    height: 100%;
-    margin: auto;
-    padding: 2em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
 }

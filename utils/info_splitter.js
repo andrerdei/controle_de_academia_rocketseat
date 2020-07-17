@@ -15,5 +15,9 @@ module.exports = {
 
      infoTimeSplitter(info) {
       return info.split("T")
+   },
+
+   infoSlashSplitter(info) {
+      return info.split("/")
    }
 }

@@ -5,7 +5,7 @@ const data = require('../../data.json')
 
 const {genderConverter} = require('../../utils/gender_converter')
 const {infoCommaSplitter} = require('../../utils/info_splitter')
-const {dateConverterReverse} = require('../../utils/date_converter')
+const {dateConverterBuggedTimestamp} = require('../../utils/date_converter')
 
 
 // Exportando Módulo Com o Controller
@@ -33,7 +33,7 @@ module.exports = {
         const instructor = {
             ...findInstructor,
 
-            birth: dateConverterReverse(findInstructor.birth),
+            birth: dateConverterBuggedTimestamp(findInstructor.birth).dashFormattedDateReverse,
             gender: genderConverter(findInstructor.gender),
             services: infoCommaSplitter(findInstructor.services)
         }
@@ -45,8 +45,11 @@ module.exports = {
         const keys = Object.keys(req.body)
 
         for(key of keys){
-            if(req.body[key] == "" || req.body.gender == undefined) {
-                return res.send("Preencha Todos os Campos!")
+            if(req.body[key] == ""
+            || req.body.gender == undefined) {
+
+                return res.send("Preencha todos os campos corretamente")
+                
             }
         }
 
@@ -69,8 +72,8 @@ module.exports = {
             ...findInstructor,
             ...req.body,
 
-            birth: Date.parse(birth),
-            id: parseInt(req.body.id)
+            id: Number(id),
+            birth: Date.parse(birth)
         }
         
         fs.writeFile("data.json", JSON.stringify(data, null, 4), (err) => {

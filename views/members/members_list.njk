@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/menu.css">
-    <link rel="stylesheet" href="/css/instructors/instructors_body.css">
-    <link rel="stylesheet" href="/css/instructors/instructors_list.css">
+    <link rel="stylesheet" href="/css/members/members_body.css">
+    <link rel="stylesheet" href="/css/members/members_list.css">
 {% endblock head_content %}
 
 
@@ -14,26 +14,30 @@
     <main>
         <section class="card">
 
-            {% for instructor in instructors %}
-                <a href="/instructors/selected_instructor/{{instructor.id}}">
+            {% for member in members %}
+                <a href="/members/selected_member/{{member.id}}">
                     <ul class="details">
                         <li class="item avatar">
                             <img
-                                src="{{instructor.avatar_url}}"
-                                alt="Imagem do Instrutor"
+                                src="{{member.avatar_url}}"
+                                alt="Imagem do Membro"
                             >
                         </li>
                         <li class="item text-info">
                             <span>Nome:</span>
-                            {{instructor.name}}
+                            {{member.name}}
                         </li>
                         <li class="item text-info">
                            <span>Idade:</span>
-                           {{instructor.age}}
+                           {{member.age}}
                         </li>
                         <li class="item text-info">
-                           <span>Acompanhamento:</span>
-                           {{instructor.services}}
+                           <span>Altura (cm):</span>
+                           {{member.height}}
+                        </li>
+                        <li class="item text-info">
+                           <span>Peso (kg):</span>
+                           {{member.weight}}
                         </li>
                     </ul>
                 </a>

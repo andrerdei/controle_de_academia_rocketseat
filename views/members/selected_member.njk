@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/menu.css">
-    <link rel="stylesheet" href="/css/instructors/instructors_body.css">
-    <link rel="stylesheet" href="/css/instructors/selected_instructor.css">
+    <link rel="stylesheet" href="/css/members/members_body.css">
+    <link rel="stylesheet" href="/css/members/selected_member.css">
 {% endblock head_content %}
 
 
@@ -14,42 +14,48 @@
     <main>
         <section class="card">
             <div class="avatar">
-                <img src="{{instructor.avatar_url}}" alt="Imagem do Instrutor">
+                <img src="{{member.avatar_url}}" alt="Imagem do Membro">
             </div>
             <div class="details">
                 <h3>Detalhes</h3>
                 <div class="item">
-                    <div>Instrutor</div>
-                    <div>{{instructor.name}}</div>
+                    <div>Membro</div>
+                    <div>{{member.name}}</div>
+                </div>
+                <div class="item">
+                    <div>E-mail</div>
+                    <div>{{member.email}}</div>
                 </div>
                 <div class="item">
                     <div>Sexo</div>
-                    <div>{{instructor.gender}}</div>
+                    <div>{{member.gender}}</div>
                 </div>
                 <div class="item">
                     <div>Idade</div>
-                    <div>{{instructor.age}}</div>
+                    <div>{{member.age}}</div>
                 </div>
                 <div class="item">
                     <div>Data de Nascimento</div>
-                    <div>{{instructor.birth}}</div>
+                    <div>{{member.birth}}</div>
                 </div>
                 <div class="item">
-                    <div>Acompanhamento</div>
-                    <ul>
-
-                        {% for service in instructor.services %}
-                            <li>{{service}}</li>
-                        {% endfor %}
-                        
-                    </ul>
+                    <div>Tipo Sanguíneo</div>
+                    <div>{{member.blood_type}}</div>
+                </div>
+                <div class="item">
+                    <div>Altura (cm)</div>
+                    <div>{{member.height}}</div>
+                </div>
+                <div class="item">
+                    <div>Peso (kg)</div>
+                    <div>{{member.weight}}</div>
                 </div>
                 <div class="item">
                     <div>Desde</div>
-                    <div>{{instructor.created_at}}</div>
+                    <div>{{member.created_at}}</div>
                 </div>
 
-                <a href="/instructors/edit_instructor/{{instructor.id}}">Editar Instrutor</a>
+                <a href="/members/edit_member/{{member.id}}">Editar Membro</a>
             </div>
         </section>
     </main>

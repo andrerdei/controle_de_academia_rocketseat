@@ -1,0 +1,5 @@
+/* Estilos Específicos do corpo de Home */
+
+.home-body{
+    background-color: var(--secondary-color)
+}

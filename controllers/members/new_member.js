@@ -8,7 +8,7 @@ const data = require('../../data.json')
 
 module.exports = {
     async index (req, res) {
-        return res.render("instructors/new_instructor")
+        return res.render("members/new_member")
     },
 
     async create(req, res) {
@@ -16,30 +16,36 @@ module.exports = {
 
         for(key of keys){
             if(req.body[key] == ""
-            || req.body.gender == undefined) {
+            || req.body.gender == undefined
+            || req.body.blood_type == undefined) {
 
                 return res.send("Preencha todos os campos corretamente")
-                
+
             }
         }
 
-        if(!data.instructors) {
-            return res.send("A lista de instrutores ainda não foi criada")
+        if(!data.members) {
+            return res.send("A lista de membros ainda não foi criada")
         } // Verificar esta condicional após criação do banco de dados
 
-        let {avatar_url, name, birth, gender, services} = req.body
-        const id = Number(data.instructors.length + 1)
+        let {avatar_url, name, email, birth, gender, blood_type, weight, height} = req.body
+        const id = Number(data.members.length + 1)
         const created_at = Date.now()
 
         birth = Date.parse(birth)
+        weight = Number(weight)
+        height = Number(height)
 
-        data.instructors.push({
+        data.members.push({
             id,
             avatar_url,
             name,
+            email,
             birth,
             gender,
-            services,
+            blood_type,
+            weight,
+            height,
             created_at
         })
 
@@ -48,7 +54,7 @@ module.exports = {
                 return res.send("Erro na escrita do arquivo")
             }
 
-            return res.redirect("/instructors")
+            return res.redirect("/members")
         })
     }
 }

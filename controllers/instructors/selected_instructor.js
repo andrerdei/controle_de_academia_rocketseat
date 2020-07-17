@@ -5,7 +5,7 @@ const data = require('../../data.json')
 const {ageConverter} = require('../../utils/age_converter')
 const {genderConverter} = require('../../utils/gender_converter')
 const {infoCommaSplitter} = require('../../utils/info_splitter')
-const {dateConverter} = require('../../utils/date_converter')
+const {dateConverter, dateConverterBuggedTimestamp} = require('../../utils/date_converter')
 
 
 // Exportando Módulo Com o Controller
@@ -32,10 +32,11 @@ module.exports = {
         const instructor = {
             ...findInstructor,
 
-            birth: ageConverter(findInstructor.birth),
+            age: ageConverter(findInstructor.birth),
+            birth: dateConverterBuggedTimestamp(findInstructor.birth).slashFormattedDate,
             gender: genderConverter(findInstructor.gender),
             services: infoCommaSplitter(findInstructor.services),
-            created_at: dateConverter(findInstructor.created_at)
+            created_at: dateConverter(findInstructor.created_at).slashFormattedDate
         }
         
         return res.render("instructors/selected_instructor", {instructor: instructor})

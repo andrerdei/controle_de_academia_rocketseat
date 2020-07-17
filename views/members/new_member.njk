@@ -5,22 +5,22 @@
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/menu.css">
-    <link rel="stylesheet" href="/css/instructors/instructors_body.css">
-    <link rel="stylesheet" href="/css/instructors/new_instructor.css">
+    <link rel="stylesheet" href="/css/members/members_body.css">
+    <link rel="stylesheet" href="/css/members/new_member.css">
 {% endblock head_content %}
 
 
 {% block body_main_content %}
     <main>
-        <form class="card" method="POST" action="/instructors/new">
+        <form class="card" method="POST" action="/members/new">
             <div class="avatar">
                 <img 
-                    src="./new_instructor_avatar.png"
+                    src="./avatar_example_avatar.png"
                     alt="Imagem de Preenchimento"
                 >
             </div>
             <div class="details">
-                <h3>Novo Instrutor</h3>
+                <h3>Novo Membro</h3>
                 
                 {% include "./includes/form_fields.njk" %}
             </div>

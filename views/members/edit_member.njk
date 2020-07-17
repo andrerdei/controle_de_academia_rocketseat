@@ -5,8 +5,8 @@
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/menu.css">
-    <link rel="stylesheet" href="/css/instructors/instructors_body.css">
-    <link rel="stylesheet" href="/css/instructors/edit_instructor.css">
+    <link rel="stylesheet" href="/css/members/members_body.css">
+    <link rel="stylesheet" href="/css/members/edit_member.css">
 {% endblock head_content %}
 
 
@@ -14,27 +14,27 @@
     <main>
         <div class="card">
             <div class="avatar">
-                    <img src="{{instructor.avatar_url}}" alt="Imagem do Instrutor">
+                    <img src="{{member.avatar_url}}" alt="Imagem do Membro">
             </div>
 
             <div class="details">
-                <form id="edit-form" method="POST" action="/instructors/edit_instructor?_method=PUT">
-                    <h3>Editar Instrutor</h3>
+                <form id="edit-form" method="POST" action="/members/edit_member?_method=PUT">
+                    <h3>Editar Membro</h3>
                     
                     {% include "./includes/form_fields.njk" %}
 
                     <input
                         type="hidden"
                         name="id"
-                        value="{{instructor.id}}"
+                        value="{{member.id}}"
                     >
                 </form>
 
-                <form id="delete-form" method="POST" action="/instructors/edit_instructor?_method=DELETE">
+                <form id="delete-form" method="POST" action="/members/edit_member?_method=DELETE">
                     <input
                         type="hidden"
                         name="id"
-                        value="{{instructor.id}}"
+                        value="{{member.id}}"
                     >
 
                     <button

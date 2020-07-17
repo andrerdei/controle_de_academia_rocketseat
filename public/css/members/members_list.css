@@ -32,9 +32,9 @@
     text-align: center;
     padding-top: 1em;
     padding-bottom: 1em;
-    border-bottom: 1px solid orange;
+    border-bottom: 1px solid rgb(168, 168, 228);
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: .5em;
     align-items: initial;
     transition: .2s ease-in-out;
@@ -44,14 +44,14 @@
     .details:hover{
         border-radius: inherit;
         box-shadow: 1px 1px 2px 1px rgba(0,0,0,.2);
-        background: linear-gradient(to top right, white 0%, orange 200%);
+        background: linear-gradient(to top right, white 0%, rgb(168, 168, 228) 200%);
         border-right: 20px solid rgba(0,0,0, .1);
         border-bottom: none;
         transform: scale(1.05);
         border-image-slice: 27 0 27 67;
         border-image-width: 20px 20px 20px 20px;
         border-image-outset: 8px 0px 10px 0px;
-        border-image-source: url("../img/border_image.png");
+        border-image-source: url("../../img/border_image.png");
     }
 }
 
@@ -59,7 +59,6 @@
     color: rgba(0,0,0,.6);
     font-size: 60%;
     font-weight: normal;
-    text-transform: capitalize;
     padding: 1em;
     box-sizing: border-box;
 }

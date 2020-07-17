@@ -1,4 +1,4 @@
-/* menu-navegacao */
+/* Menu de Navegação */
 
 header {
     position: relative;
@@ -40,7 +40,6 @@ header {
     content: "";
     width: 0%;
     height: .05em;
-    background-color: var(--primary-color);
     position: absolute;
     bottom: 0;
     left: 0;
@@ -48,12 +47,69 @@ header {
 }
 
 @media(hover: hover){
+    .menu-navegacao a:hover{
+        font-weight: bold;
+    }
+    
     .menu-navegacao a:hover::after{
         width: 100%;
     }
 }
 
-.menu-navegacao .active{
+
+/* Menu de Navegação (Classes específicas dos Links) */
+
+.menu-navegacao .instructors-link::after{
+    background-color: var(--primary-color);
+}
+
+@media(hover: hover){
+    .menu-navegacao .instructors-link:hover{
+        color: var(--primary-color);
+    }
+}
+
+.menu-navegacao .members-link::after{
+    background-color: var(--quaternary-color);
+}
+
+@media(hover: hover){
+    .menu-navegacao .members-link:hover{
+        color: var(--quaternary-color);
+    }
+}
+
+
+/* Classes CSS Dinâmicas (Active Links) */
+
+.menu-navegacao .active-instructors-link{
     color: var(--primary-color);
     font-weight: bold;
+}
+
+.menu-navegacao .active-instructors-link:after{
+    content: "";
+    width: 100%;
+    height: .05em;
+    background-color: var(--primary-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: width .5s cubic-bezier(0.42, 0, 0.19, 1.06);
+}
+
+.menu-navegacao .active-members-link{
+    color: var(--quaternary-color);
+    font-weight: bold;
+}
+
+.menu-navegacao .active-members-link::after{
+    content: "";
+    width: 100%;
+    height: .05em;
+    background-color: var(--quaternary-color);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: width .5s cubic-bezier(0.42, 0, 0.19, 1.06);
 }

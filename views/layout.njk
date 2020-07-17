@@ -1,20 +1,47 @@
 <!DOCTYPE html>
+
 <html lang="pt">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gym Register</title>
+    <link rel="icon" href="../public/img/avatar_example.png">
 
     {% block head_content %}{% endblock %}
     
 </head>
 
-<body>
+<body class="home-body instructors-body members-body">
     <header>
         <nav class="menu-navegacao">
             <ul>
-                <li><a href="/instructors" class="active">Instructors</a></li>
-                <li><a href="/members">Members</a></li>
+                <li>
+                    <a
+                        href="/instructors"
+                        id="active-instructors-link"
+
+                       
+                            class="instructors-link active-instructors-link"
+                        
+
+                        >
+                        Instructors
+                    </a>
+                </li>
+                <li>
+                    <a 
+                        href="/members"
+                        id="active-members-link"
+                        
+                        
+                            class="members-link active-members-link"
+                        
+                    >
+                        Members
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>
@@ -24,9 +51,6 @@
     <footer>
 
     </footer>
-
-    {% block scripts_content %}{% endblock %}
-
 </body>
 
 </html>

@@ -15,6 +15,8 @@
     <input
         type="text"
         name="name"
+        pattern="[A-Za-z]+\s[A-Za-z]+"
+        title="Preencha com seu nome e sobrenome, sem acentos"
         placeholder="Digite seu nome"
         value="{{instructor.name}}"
         required

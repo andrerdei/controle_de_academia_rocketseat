@@ -20,12 +20,18 @@ module.exports = {
         const month = dateArray[1]
         const year = dateArray[0]
 
-        const formattedDate = `${day}/${month}/${year}`
+        const slashFormattedDate = `${day}/${month}/${year}`
 
-        return formattedDate
+        return {
+            day,
+            month,
+            year,
+
+            slashFormattedDate
+        }
     },
 
-    dateConverterReverse(timestamp) {
+    dateConverterBuggedTimestamp(timestamp) {
         // Não foi possível utilizar "Intl.DateTimeFormat" aqui, pois há algum problema ao transformar a data do formulário em timestamp (computa 1 dia a menos)
 
         const defaultDate = new Date(timestamp)
@@ -48,8 +54,16 @@ module.exports = {
         const month = dateArray[1]
         const year = dateArray[0]
 
-        const formattedDate = `${year}-${month}-${day}`
+        const slashFormattedDate = `${day}/${month}/${year}`
+        const dashFormattedDateReverse = `${year}-${month}-${day}`
 
-        return formattedDate
+        return {
+            day,
+            month,
+            year,
+
+            slashFormattedDate,
+            dashFormattedDateReverse
+        }
     }
 }

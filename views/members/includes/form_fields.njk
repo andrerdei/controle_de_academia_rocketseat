@@ -1,0 +1,187 @@
+<!-- Campos de Formulário Reutilizáveis Para Instrutores -->
+
+<div class="item">
+    <div>Avatar URL</div>
+    <input
+        type="url"
+        name="avatar_url"
+        placeholder="http://"
+        value="{{member.avatar_url}}"
+        required
+    >
+</div>
+<div class="item">
+    <div>Membro</div>
+    <input
+        type="text"
+        name="name"
+        pattern="[A-Za-z]+\s[A-Za-z]+$"
+        title="Preencha com seu nome e sobrenome, sem acentos"
+        placeholder="Digite seu nome"
+        value="{{member.name}}"
+        required
+    >
+</div>
+<div class="item">
+    <div>E-mail</div>
+    <input
+        type="email"
+        name="email"
+        placeholder="Digite seu e-mail"
+        value="{{member.email}}"
+        required
+    >
+</div>
+<div class="item">
+    <div>Data de Nascimento</div>
+    <input
+        type="date"
+        name="birth"
+        value="{{member.birth}}"
+        required
+    >
+</div>
+<div class="item">
+    <div>Sexo</div>
+    <ul>
+        <li>
+            <input
+                type="radio"
+                name="gender"
+                value="M"
+
+                {% if member.gender == "Masculino" %}
+                    checked
+                {% endif %}
+
+                required
+            >
+            Masculino
+        </li>
+        <li>
+            <input
+                type="radio"
+                name="gender"
+                value="F"
+
+                {% if member.gender == "Feminino" %}
+                    checked
+                {% endif %}
+            >
+            Feminino
+        </li>
+    </ul>
+</div>
+<div class="item">
+    <div>Tipo Sanguíneo</div>
+    <div>
+        <select
+        name="blood_type"
+        required
+        >
+            <option disabled selected>
+                -- Selecionar Opção --
+            </option>
+            <option value="A+"
+
+                {% if member.blood_type == "A+" %}
+                    selected
+                {% endif %}
+
+            >
+                A+
+            </option>
+            <option value="A-"
+
+                {% if member.blood_type == "A-" %}
+                    selected
+                {% endif %}
+
+            >
+                A-
+            </option>
+            <option value="B+"
+
+                {% if member.blood_type == "B+" %}
+                    selected
+                {% endif %}
+
+            >
+                B+
+            </option>
+            <option value="B-"
+
+                {% if member.blood_type == "B-" %}
+                    selected
+                {% endif %}
+
+            >
+                B-
+            </option>
+            <option value="AB+"
+
+                {% if member.blood_type == "AB+" %}
+                    selected
+                {% endif %}
+
+            >
+                AB+
+            </option>
+            <option value="AB-"
+
+                {% if member.blood_type == "AB-" %}
+                    selected
+                {% endif %}
+
+            >
+                AB-
+            </option>
+            <option value="O+"
+
+                {% if member.blood_type == "O+" %}
+                    selected
+                {% endif %}
+
+            >
+                O+
+            </option>
+            <option value="O-"
+
+                {% if member.blood_type == "O-" %}
+                    selected
+                {% endif %}
+
+            >
+                O-
+            </option>
+        </select>
+    </div>
+</div>
+<div class="item">
+    <div>Peso (kg)</div>
+    <input
+        type="text"
+        name="weight"
+        pattern="\d{2,3}$"
+        title="Preencha seu peso corretamente (em kg)"
+        value="{{member.weight}}"
+        required
+    >
+</div>
+<div class="item">
+    <div>Altura (cm)</div>
+    <input
+        type="text"
+        name="height"
+        pattern="\d{2,3}$"
+        title="Preencha sua altura corretamente (em cm)"
+        value="{{member.height}}"
+        required
+    >
+</div>
+<button
+    class="primary-color-button"
+    type="submit"
+>
+Salvar
+</button>

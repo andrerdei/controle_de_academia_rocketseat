@@ -2,7 +2,7 @@
 
 const data = require('../../data.json')
 
-const {infoCommaSplitter} = require('../../utils/info_splitter')
+const {ageConverter} = require('../../utils/age_converter')
 
 
 // Exportando Módulo Com o Controller
@@ -16,9 +16,10 @@ module.exports = {
         const instructors = []
 
         data.instructors.forEach((instructor) => {
+            instructor.age = ageConverter(instructor.birth),
             instructors.push(instructor)
         })
 
-        return res.render("instructors/instructors_list",{instructors: instructors})
+        return res.render("instructors/instructors_list", {instructors: instructors})
     }
 }
