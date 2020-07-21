@@ -7,7 +7,7 @@
             "birth": 810691200000,
             "gender": "M",
             "services": "musculação, crossfit",
-            "created_at": 1593099747464,
+            "created_at": 1593099771000,
             "age": 24
         },
         {
@@ -34,11 +34,11 @@
             "id": 4,
             "avatar_url": "https://images.unsplash.com/photo-1575859694244-0b337bf58e0b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
             "name": "Fulana Tal",
-            "birth": 631152000000,
+            "birth": 584236800000,
             "gender": "F",
             "services": "pilates, corrida",
-            "created_at": 1593183522697,
-            "age": 30
+            "created_at": 1595260207095,
+            "age": 32
         }
     ],
     "members": [
@@ -91,8 +91,7 @@
             "blood_type": "O-",
             "weight": 95,
             "height": 195,
-            "created_at": 1594830345258,
-            "age": 32
+            "created_at": 1595260319545
         }
     ]
 }

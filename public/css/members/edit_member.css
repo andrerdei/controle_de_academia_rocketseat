@@ -176,3 +176,91 @@
 .details .item input::placeholder{
     font-weight: normal;
 }
+
+
+/* Modal Delete */
+
+.modal-delete{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -10;
+    opacity: 0;
+    transition: opacity .5s ease-in-out
+}
+
+.modal-delete form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-delete .confirmation-text{
+    width: 33.33%;
+}
+
+.modal-delete .confirmation-text p{
+    width: 100%;
+    font-size: 17px;
+    font-weight: bold;
+    color: transparent;
+    background-color: transparent;
+    text-align: center;
+    margin: 1.5em 0;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: none;
+    box-sizing: border-box;
+}
+
+.modal-delete .buttons-div{
+    width: 33.3%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: center;
+}
+
+.modal-delete .buttons-div button{
+    width: 50%;
+    color: transparent;
+    background-color: transparent;
+    text-align: center;
+}
+
+@media(hover: hover){
+    .modal-delete .buttons-div button:hover{
+        box-shadow: none;
+    }
+}
+
+
+/* Mostrar Modal Dinamicamente */
+
+.show-modal{
+    background-color: rgba(37,37,36,.6);
+    z-index: 10;
+    opacity: 1;
+}
+
+.modal-delete .confirmation-text .show-modal-confirmation-text{
+    color: white;
+    background-color: darkslategrey;
+    box-shadow: 0px 0px 5px 2px rgba(0,0,0,.5);
+}
+
+.modal-delete .buttons-div .show-modal-buttons{
+    color: black;
+    background-color: white;
+}
+
+@media(hover: hover){
+    .modal-delete .buttons-div .show-modal-buttons:hover{
+        box-shadow: inset 1px 1px 5px .1px rgba(0,0,0,.5);
+    }
+}

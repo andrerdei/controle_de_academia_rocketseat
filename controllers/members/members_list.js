@@ -20,6 +20,6 @@ module.exports = {
             members.push(member)
         })
 
-        return res.render("members/members_list",{members: members})
+        return res.render("members/members_list", {members: members})
     }
 }

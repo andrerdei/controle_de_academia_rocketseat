@@ -5,6 +5,7 @@
     --secondary-color: #f7df1e;
     --tertiary-color: rgb(255, 0, 38);
     --quaternary-color: rgb(89, 89, 207);
+    --quinary-color: rgb(112, 146, 112);
 }
 
 
@@ -17,6 +18,7 @@ body{
     font-family: "Roboto", "sans serif";
     font-size: 16px;
     line-height: 28px;
+    position: relative;
     overflow-x: hidden;
     z-index: -10;
 }
@@ -71,9 +73,25 @@ body:focus{
 }
 
 body input:focus{
+    background-color: lightyellow;
     outline: none;
 }
 
 body button:focus{
     outline: none;
+}
+
+
+/* Classes CSS Dinâmicas (Page Bodies) */
+
+.home-body{
+    background-color: var(--quinary-color)
+}
+
+.instructors-body{
+    background-color: var(--primary-color)
+}
+
+.members-body{
+    background-color: var(--quaternary-color)
 }

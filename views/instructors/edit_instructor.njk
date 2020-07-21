@@ -5,7 +5,6 @@
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/menu.css">
-    <link rel="stylesheet" href="/css/instructors/instructors_body.css">
     <link rel="stylesheet" href="/css/instructors/edit_instructor.css">
 {% endblock head_content %}
 
@@ -30,20 +29,47 @@
                     >
                 </form>
 
-                <form id="delete-form" method="POST" action="/instructors/edit_instructor?_method=DELETE">
-                    <input
-                        type="hidden"
-                        name="id"
-                        value="{{instructor.id}}"
-                    >
-
+                <form id="fake-form">
                     <button
+                        id="fake-delete-button"
                         class="tertiary-color-button form-button"
-                        type="submit"
+                        type="button"
+                        onclick="toggleDeleteModalClasses()"
                     >
                     Deletar
                     </button>
                 </form>
+                
+                <section id = "modal-delete" class= "modal-delete">
+                    <form id="delete-form" method="POST" action="/instructors/edit_instructor?_method=DELETE">
+                        <input
+                            type="hidden"
+                            name="id"
+                            value="{{instructor.id}}"
+                        >
+
+                        <span class="confirmation-text">
+                            <p>
+                                Confirma que quer deletar este instrutor?
+                            </p>
+                        </span>
+
+                        <div class="buttons-div">
+                            <button
+                            type="submit"
+                            >
+                            Sim
+                            </button>
+
+                            <button
+                                type="button"
+                                onclick="toggleDeleteModalClasses()"
+                            >
+                            Não
+                            </button>
+                        </div>
+                    </form>
+                </section>
             </div>
         </div>
     </main>

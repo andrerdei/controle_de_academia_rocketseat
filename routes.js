@@ -23,6 +23,7 @@ const routes = express.Router()
 // Home
 
 routes.get("/", home_page.redirect)
+routes.get("/home", home_page.redirect)
 
 
 // Instructors
