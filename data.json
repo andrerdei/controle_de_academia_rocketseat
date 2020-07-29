@@ -43,19 +43,6 @@
     ],
     "members": [
         {
-            "id": 1,
-            "avatar_url": "https://images.unsplash.com/photo-1548690312-e3b507d8c110?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
-            "name": "Maria Aparecida",
-            "email": "mariaaparecida@exemplo.com",
-            "birth": 583545600000,
-            "gender": "F",
-            "blood_type": "O-",
-            "weight": 68,
-            "height": 175,
-            "created_at": 1594830279923,
-            "age": 32
-        },
-        {
             "id": 2,
             "avatar_url": "https://images.unsplash.com/photo-1575859694244-0b337bf58e0b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
             "name": "Joana Silva",
@@ -91,7 +78,8 @@
             "blood_type": "O-",
             "weight": 95,
             "height": 195,
-            "created_at": 1595260319545
+            "created_at": 1595260319545,
+            "age": 32
         }
     ]
 }

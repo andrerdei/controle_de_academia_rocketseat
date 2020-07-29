@@ -1,11 +1,11 @@
 // Declarando Variáveis Globais (require)
 
-const data = require('../../data.json')
+const data = require('../../../../data.json')
 
-const {ageConverter} = require('../../utils/age_converter')
-const {genderConverter} = require('../../utils/gender_converter')
-const {infoCommaSplitter} = require('../../utils/info_splitter')
-const {dateConverter, dateConverterBuggedTimestamp} = require('../../utils/date_converter')
+const {ageConverter} = require('../../../lib/utils/age_converter')
+const {genderConverter} = require('../../../lib/utils/gender_converter')
+const {infoCommaSplitter} = require('../../../lib/utils/info_splitter')
+const {dateConverter, dateConverterBuggedTimestamp} = require('../../../lib/utils/date_converter')
 
 
 // Exportando Módulo Com o Controller

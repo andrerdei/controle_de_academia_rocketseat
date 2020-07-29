@@ -1,8 +1,8 @@
 // Declarando Variáveis Globais (require)
 
-const data = require('../../data.json')
+const data = require('../../../../data.json')
 
-const {ageConverter} = require('../../utils/age_converter')
+const {ageConverter} = require('../../../lib/utils/age_converter')
 
 
 // Exportando Módulo Com o Controller

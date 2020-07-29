@@ -2,17 +2,17 @@
 
 const express = require('express')
 
-const home_page = require('./controllers/home/home_page')
+const home_page = require('./app/controllers/home/home_page')
 
-const instructors_list = require('./controllers/instructors/instructors_list')
-const new_instructor = require('./controllers/instructors/new_instructor')
-const selected_instructor = require('./controllers/instructors/selected_instructor')
-const edit_instructor = require('./controllers/instructors/edit_instructor')
+const instructors_list = require('./app/controllers/instructors/instructors_list')
+const new_instructor = require('./app/controllers/instructors/new_instructor')
+const selected_instructor = require('./app/controllers/instructors/selected_instructor')
+const edit_instructor = require('./app/controllers/instructors/edit_instructor')
 
-const members_list = require('./controllers/members/members_list')
-const new_member = require('./controllers/members/new_member')
-const selected_member = require('./controllers/members/selected_member')
-const edit_member = require('./controllers/members/edit_member')
+const members_list = require('./app/controllers/members/members_list')
+const new_member = require('./app/controllers/members/new_member')
+const selected_member = require('./app/controllers/members/selected_member')
+const edit_member = require('./app/controllers/members/edit_member')
 
 const routes = express.Router()
 
