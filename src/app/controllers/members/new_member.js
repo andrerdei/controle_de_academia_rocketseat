@@ -1,17 +1,18 @@
 // Declarando Variáveis Globais (require)
 
-const fs = require('fs')
-const data = require('../../../../data.json')
+const db = require('../../../config/db')
+
+const {dateConverter} = require('../../../lib/utils/date_converter')
 
 
 // Exportando Módulo Com o Controller
 
 module.exports = {
-    async index (req, res) {
+    index (req, res) {
         return res.render("members/new_member")
     },
 
-    async create(req, res) {
+    create(req, res) {
         const keys = Object.keys(req.body)
 
         for(key of keys){
@@ -24,20 +25,31 @@ module.exports = {
             }
         }
 
-        if(!data.members) {
-            return res.send("A lista de membros ainda não foi criada")
-        } // Verificar esta condicional após criação do banco de dados
+        const query = `
+            INSERT INTO members(
+                avatar_url,
+                name,
+                email,
+                birth,
+                gender,
+                blood_type,
+                weight,
+                height,
+                created_at
+            )
 
-        let {avatar_url, name, email, birth, gender, blood_type, weight, height} = req.body
-        const id = Number(data.members.length + 1)
-        const created_at = Date.now()
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+        `
 
-        birth = Date.parse(birth)
+        const {avatar_url, name, email, birth, gender, blood_type} = req.body
+        let {weight, height} = req.body
+        let created_at = Date.now()
+
         weight = Number(weight)
         height = Number(height)
+        created_at = dateConverter(created_at).dashFormattedDateReverse
 
-        data.members.push({
-            id,
+        const values = [
             avatar_url,
             name,
             email,
@@ -47,11 +59,11 @@ module.exports = {
             weight,
             height,
             created_at
-        })
+        ]
 
-        fs.writeFile("data.json", JSON.stringify(data, null, 4), (err) => {
-            if(err){
-                return res.send("Erro na escrita do arquivo")
+        db.query(query, values, (err, results) => {
+            if(err) {
+                res.send("Erro ao conectar com o banco de dados, tente novamente")
             }
 
             return res.redirect("/members")

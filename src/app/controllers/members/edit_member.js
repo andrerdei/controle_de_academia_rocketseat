@@ -1,7 +1,6 @@
 // Declarando Variáveis Globais (require)
 
-const fs = require('fs')
-const data = require('../../../../data.json')
+const db = require('../../../config/db')
 
 const {genderConverter} = require('../../../lib/utils/gender_converter')
 const {dateConverterBuggedTimestamp} = require('../../../lib/utils/date_converter')
@@ -10,15 +9,11 @@ const {dateConverterBuggedTimestamp} = require('../../../lib/utils/date_converte
 // Exportando Módulo Com o Controller
 
 module.exports = {
-    async redirect(req, res) {
+    redirect(req, res) {
         return res.redirect("edit_member/1")
     },
 
-    async index(req, res) {
-        if(!data.members) {
-            return res.send("A lista de membros ainda não foi criada")
-        } // Verificar esta condicional após criação do banco de dados
-        
+    index(req, res) {        
         const {id} = req.params
 
         const findMember = data.members.find((member) => {
@@ -39,7 +34,7 @@ module.exports = {
         return res.render("members/edit_member", {member: member})
     },
 
-    async update(req, res) {
+    update(req, res) {
         const keys = Object.keys(req.body)
 
         for(key of keys){
@@ -86,7 +81,7 @@ module.exports = {
         res.redirect(`/members/selected_member/${id}`)
     },
 
-    async delete(req, res) {
+    delete(req, res) {
         const {id} = req.body
 
         const filterMembers = data.members.filter((member) => {

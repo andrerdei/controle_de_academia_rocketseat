@@ -1,44 +1,41 @@
 // Declarando Variáveis Globais (require)
 
-const data = require('../../../../data.json')
+const selectedInstructorModel = require('../../../app/models/instructors/selected_instructor')
 
 const {ageConverter} = require('../../../lib/utils/age_converter')
 const {genderConverter} = require('../../../lib/utils/gender_converter')
 const {infoCommaSplitter} = require('../../../lib/utils/info_splitter')
-const {dateConverter, dateConverterBuggedTimestamp} = require('../../../lib/utils/date_converter')
+const {dateConverter} = require('../../../lib/utils/date_converter')
 
 
 // Exportando Módulo Com o Controller
 
 module.exports = {
-    async redirect(req, res) {
+    redirect(req, res) {
         return res.redirect("selected_instructor/1")
     },
-    async index(req, res) {
-        if(!data.instructors) {
-            return res.send("A lista de instrutores ainda não foi criada")
-        } // Verificar esta condicional após criação do banco de dados
-        
-        const {id} = req.params
+    
+    index(req, res) {
+        const paramsData = req.params
 
-        const findInstructor = data.instructors.find((instructor) => {
-            return instructor.id == id
+        selectedInstructorModel.showSelectedInstructor(paramsData, (data) => {
+            const findInstructor = data
+
+            if(!findInstructor) {
+                return res.send("Instrutor não encontrado, tente novamente")
+            }
+
+            const instructor = {
+                ...findInstructor,
+    
+                age: ageConverter(findInstructor.birth),
+                birth: dateConverter(findInstructor.birth).slashFormattedDate,
+                gender: genderConverter(findInstructor.gender),
+                services: infoCommaSplitter(findInstructor.services),
+                created_at: dateConverter(findInstructor.created_at).slashFormattedDate
+            }
+
+            return res.render("instructors/selected_instructor", {instructor: instructor})
         })
-
-        if(!findInstructor) {
-            return res.send("Instrutor não encontrado, tente novamente")
-        }
-
-        const instructor = {
-            ...findInstructor,
-
-            age: ageConverter(findInstructor.birth),
-            birth: dateConverterBuggedTimestamp(findInstructor.birth).slashFormattedDate,
-            gender: genderConverter(findInstructor.gender),
-            services: infoCommaSplitter(findInstructor.services),
-            created_at: dateConverter(findInstructor.created_at).slashFormattedDate
-        }
-        
-        return res.render("instructors/selected_instructor", {instructor: instructor})
     }
 }

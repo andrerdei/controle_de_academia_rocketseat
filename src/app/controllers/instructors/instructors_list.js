@@ -1,6 +1,6 @@
 // Declarando Variáveis Globais (require)
 
-const data = require('../../../../data.json')
+const instructorsListModel = require('../../../app/models/instructors/instructors_list')
 
 const {ageConverter} = require('../../../lib/utils/age_converter')
 
@@ -8,18 +8,19 @@ const {ageConverter} = require('../../../lib/utils/age_converter')
 // Exportando Módulo Com o Controller
 
 module.exports = {
-    async index(req, res) {
-        if(!data.instructors) {
-            return res.send("A lista de instrutores ainda não foi criada")
-        } // Verificar esta condicional após criação do banco de dados
+    index(req, res) {
+        instructorsListModel.showInstructorsList((data) => {
+            const instructors = data
 
-        const instructors = []
+            if(!instructors) {
+                return res.send("Instrutores não encontrados, tente novamente")
+            }
 
-        data.instructors.forEach((instructor) => {
-            instructor.age = ageConverter(instructor.birth),
-            instructors.push(instructor)
+            instructors.forEach((instructor) => {
+                instructor.age = ageConverter(instructor.birth)
+            })
+            
+            return res.render("instructors/instructors_list", {instructors: instructors})
         })
-
-        return res.render("instructors/instructors_list", {instructors: instructors})
     }
 }

@@ -6,13 +6,13 @@ const {infoQuotationMarksSplitter, infoTimeSplitter, infoDashSplitter} = require
 // Convertendo Data para formatação DD/MM/AA
 
 module.exports = {
-    dateConverter(timestamp) {
+    dateConverter(data) {
         const defaultDate = new Intl.DateTimeFormat("default", {
             year: "numeric",
             month: "2-digit",
             day: "2-digit"
         })
-        .format(timestamp)
+        .format(data)
 
         const dateArray = infoDashSplitter(defaultDate)
 
@@ -21,20 +21,22 @@ module.exports = {
         const year = dateArray[0]
 
         const slashFormattedDate = `${day}/${month}/${year}`
+        const dashFormattedDateReverse = `${year}-${month}-${day}`
 
         return {
             day,
             month,
             year,
 
-            slashFormattedDate
+            slashFormattedDate,
+            dashFormattedDateReverse
         }
     },
 
-    dateConverterBuggedTimestamp(timestamp) {
+    dateConverterBuggedTimestamp(data) {
         // Não foi possível utilizar "Intl.DateTimeFormat" aqui, pois há algum problema ao transformar a data do formulário em timestamp (computa 1 dia a menos)
 
-        const defaultDate = new Date(timestamp)
+        const defaultDate = new Date(data)
 
 
         // Foi necessário converter duas vezes a "defaultDate" para criar uma string no formato desejado

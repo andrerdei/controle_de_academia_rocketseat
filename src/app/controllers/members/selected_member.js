@@ -1,42 +1,50 @@
 // Declarando Variáveis Globais (require)
 
-const data = require('../../../../data.json')
+const db = require('../../../config/db')
 
 const {ageConverter} = require('../../../lib/utils/age_converter')
 const {genderConverter} = require('../../../lib/utils/gender_converter')
-const {dateConverter, dateConverterBuggedTimestamp} = require('../../../lib/utils/date_converter')
+const {dateConverter} = require('../../../lib/utils/date_converter')
 
 
 // Exportando Módulo Com o Controller
 
 module.exports = {
-    async redirect(req, res) {
+    redirect(req, res) {
         return res.redirect("selected_member/1")
     },
-    async index(req, res) {
-        if(!data.members) {
-            return res.send("A lista de membros ainda não foi criada")
-        } // Verificar esta condicional após criação do banco de dados
-        
+    index(req, res) {
         const {id} = req.params
 
-        const findMember = data.members.find((member) => {
-            return member.id == id
+        const query = `
+            SELECT * FROM members
+        `
+
+        db.query(query, (err, results) => {
+            if(err) {
+                res.send("Erro ao conectar com o banco de dados, tente novamente")
+            }
+
+            const members = results.rows
+
+            const findMember = members.find((member) => {
+                return member.id == id
+            })
+
+            if(!findMember) {
+                return res.send("Membro não encontrado, tente novamente")
+            }
+
+            const member = {
+                ...findMember,
+    
+                age: ageConverter(findMember.birth),
+                birth: dateConverter(findMember.birth).slashFormattedDate,
+                gender: genderConverter(findMember.gender),
+                created_at: dateConverter(findMember.created_at).slashFormattedDate
+            }
+
+            return res.render("members/selected_member", {member: member})
         })
-
-        if(!findMember) {
-            return res.send("Membro não encontrado, tente novamente")
-        }
-
-        const member = {
-            ...findMember,
-
-            age: ageConverter(findMember.birth),
-            birth: dateConverterBuggedTimestamp(findMember.birth).slashFormattedDate,
-            gender: genderConverter(findMember.gender),
-            created_at: dateConverter(findMember.created_at).slashFormattedDate
-        }
-        
-        return res.render("members/selected_member", {member: member})
     }
 }

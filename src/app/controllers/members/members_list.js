@@ -1,6 +1,6 @@
 // Declarando Variáveis Globais (require)
 
-const data = require('../../../../data.json')
+const db = require('../../../config/db')
 
 const {ageConverter} = require('../../../lib/utils/age_converter')
 
@@ -8,18 +8,23 @@ const {ageConverter} = require('../../../lib/utils/age_converter')
 // Exportando Módulo Com o Controller
 
 module.exports = {
-    async index(req, res) {
-        if(!data.members) {
-            return res.send("A lista de membros ainda não foi criada")
-        } // Verificar esta condicional após criação do banco de dados
+    index(req, res) {
+        const query = `
+            SELECT * FROM members
+        `
+        
+        db.query(query, (err, results) => {
+            if(err) {
+                return res.send("Erro ao conectar com o banco de dados, tente novamente")
+            }
 
-        const members = []
+            const members = results.rows
 
-        data.members.forEach((member) => {
-            member.age = ageConverter(member.birth),
-            members.push(member)
+            members.forEach((member) => {
+                member.age = ageConverter(member.birth)
+            })
+
+            return res.render("members/members_list", {members: members})
         })
-
-        return res.render("members/members_list", {members: members})
     }
 }
