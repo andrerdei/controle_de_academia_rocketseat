@@ -1,6 +1,6 @@
 // Declarando Variáveis Globais (require)
 
-const db = require('../../../config/db')
+const membersListModel = require('../../../app/models/members/members_list')
 
 const {ageConverter} = require('../../../lib/utils/age_converter')
 
@@ -9,21 +9,17 @@ const {ageConverter} = require('../../../lib/utils/age_converter')
 
 module.exports = {
     index(req, res) {
-        const query = `
-            SELECT * FROM members
-        `
-        
-        db.query(query, (err, results) => {
-            if(err) {
-                return res.send("Erro ao conectar com o banco de dados, tente novamente")
+        membersListModel.showmembersList((data) => {
+            const members = data
+
+            if(!members) {
+                return res.send("Membros não encontrados, tente novamente")
             }
-
-            const members = results.rows
-
+    
             members.forEach((member) => {
                 member.age = ageConverter(member.birth)
             })
-
+    
             return res.render("members/members_list", {members: members})
         })
     }

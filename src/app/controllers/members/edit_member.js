@@ -1,6 +1,6 @@
 // Declarando Variáveis Globais (require)
 
-const db = require('../../../config/db')
+const editMemberModel = require('../../../app/models/members/edit_member')
 
 const {genderConverter} = require('../../../lib/utils/gender_converter')
 const {dateConverterBuggedTimestamp} = require('../../../lib/utils/date_converter')
@@ -14,24 +14,24 @@ module.exports = {
     },
 
     index(req, res) {        
-        const {id} = req.params
+        const paramsData = req.params
 
-        const findMember = data.members.find((member) => {
-            return member.id == id
+        editMemberModel.showEditingMember(paramsData, (data) => {
+            const findMember = data
+
+            if(!findMember) {
+                return res.send("Membro não encontrado, tente novamente")
+            }
+    
+            const member = {
+                ...findMember,
+    
+                birth: dateConverterBuggedTimestamp(findMember.birth).dashFormattedDateReverse,
+                gender: genderConverter(findMember.gender)
+            }
+    
+            return res.render("members/edit_member", {member: member})
         })
-
-        if(!findMember) {
-            return res.send("Membro não encontrado, tente novamente")
-        }
-
-        const member = {
-            ...findMember,
-
-            birth: dateConverterBuggedTimestamp(findMember.birth).dashFormattedDateReverse,
-            gender: genderConverter(findMember.gender)
-        }
-
-        return res.render("members/edit_member", {member: member})
     },
 
     update(req, res) {
@@ -47,55 +47,18 @@ module.exports = {
             }
         }
 
-        const {id, birth, height, weight} = req.body
+        const bodyData = req.body
 
-        let index = 0
-
-        const findMember = data.members.find((member, currentIndex) => {
-            if(member.id == id) {
-                index = currentIndex
-                return true
-            }
+        editMemberModel.updateEditingMember(bodyData, (data) => {
+            res.redirect(`/members/selected_member/${data.id}`)
         })
-
-        if(!findMember) {
-            return res.send("Membro não encontrado, tente novamente")
-        }
-        
-        data.members[index] = {
-            ...findMember,
-            ...req.body,
-
-            id: Number(id),
-            birth: Date.parse(birth),
-            height: Number(height),
-            weight: Number(weight)
-        }
-        
-        fs.writeFile("data.json", JSON.stringify(data, null, 4), (err) => {
-            if(err){
-                return res.send("Erro na escrita do arquivo")
-            }
-        })
-        
-        res.redirect(`/members/selected_member/${id}`)
     },
 
     delete(req, res) {
-        const {id} = req.body
+        const bodyData = req.body
 
-        const filterMembers = data.members.filter((member) => {
-            return member.id != id
+        editMemberModel.deleteEditingMember(bodyData, () => {
+            return res.redirect("/members")
         })
-
-        data.members = filterMembers
-
-        fs.writeFile("data.json", JSON.stringify(data, null, 4), (err) => {
-            if(err) {
-                return res.send("Erro na escrita do arquivo")
-            }
-        })
-
-        return res.redirect("/members")
     }
 }

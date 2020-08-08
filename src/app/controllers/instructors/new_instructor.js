@@ -30,7 +30,7 @@ module.exports = {
         bodyData.created_at = dateConverter(created_at).dashFormattedDateReverse
 
         newInstructorModel.createNewInstructor(bodyData, () => {
-            return res.redirect('/instructors')
+            return res.redirect("/instructors")
         })  
     }
 }

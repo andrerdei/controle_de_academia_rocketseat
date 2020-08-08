@@ -1,6 +1,6 @@
 // Declarando Variáveis Globais (require)
 
-const db = require('../../../config/db')
+const selectedMemberModel = require('../../../app/models/members/selected_member')
 
 const {ageConverter} = require('../../../lib/utils/age_converter')
 const {genderConverter} = require('../../../lib/utils/gender_converter')
@@ -13,23 +13,12 @@ module.exports = {
     redirect(req, res) {
         return res.redirect("selected_member/1")
     },
+
     index(req, res) {
-        const {id} = req.params
+        const paramsData = req.params
 
-        const query = `
-            SELECT * FROM members
-        `
-
-        db.query(query, (err, results) => {
-            if(err) {
-                res.send("Erro ao conectar com o banco de dados, tente novamente")
-            }
-
-            const members = results.rows
-
-            const findMember = members.find((member) => {
-                return member.id == id
-            })
+        selectedMemberModel.showSelectedMember(paramsData, (data) => {
+            const findMember = data
 
             if(!findMember) {
                 return res.send("Membro não encontrado, tente novamente")
