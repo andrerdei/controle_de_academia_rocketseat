@@ -9,7 +9,7 @@ const {ageConverter} = require('../../../lib/utils/age_converter')
 
 module.exports = {
     index(req, res) {
-        membersListModel.showmembersList((data) => {
+        membersListModel.showMembersList((data) => {
             const members = data
 
             if(!members) {

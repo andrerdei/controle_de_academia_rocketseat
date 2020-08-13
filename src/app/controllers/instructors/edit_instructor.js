@@ -50,6 +50,8 @@ module.exports = {
 
         const bodyData = req.body
 
+        bodyData.id = Number(bodyData.id)
+
         editInstructorModel.updateEditingInstructor(bodyData, (data) => {
             res.redirect(`/instructors/selected_instructor/${data.id}`)
         })
@@ -57,6 +59,8 @@ module.exports = {
     
     delete(req, res) {
         const bodyData = req.body
+
+        bodyData.id = Number(bodyData.id)
 
         editInstructorModel.deleteEditingInstructor(bodyData, () => {
             return res.redirect("/instructors")

@@ -18,6 +18,7 @@ module.exports = {
 
             instructors.forEach((instructor) => {
                 instructor.age = ageConverter(instructor.birth)
+                instructor.total_studants = Number(instructor.total_students)
             })
             
             return res.render("instructors/instructors_list", {instructors: instructors})

@@ -73,13 +73,39 @@
     </ul>
 </div>
 <div class="item">
+    <div>Peso (kg)</div>
+    <input
+        type="text"
+        name="weight"
+        pattern="\d{2,3}$"
+        title="Preencha seu peso corretamente (em kg)"
+        value="{{member.weight}}"
+        required
+    >
+</div>
+<div class="item">
+    <div>Altura (cm)</div>
+    <input
+        type="text"
+        name="height"
+        pattern="\d{2,3}$"
+        title="Preencha sua altura corretamente (em cm)"
+        value="{{member.height}}"
+        required
+    >
+</div>
+<div class="item">
     <div>Tipo Sanguíneo</div>
     <div>
         <select
         name="blood_type"
         required
         >
-            <option disabled selected>
+            <option 
+                class="disabled-select"
+                disabled
+                selected
+            >
                 -- Selecionar Opção --
             </option>
             <option value="A+"
@@ -158,27 +184,36 @@
     </div>
 </div>
 <div class="item">
-    <div>Peso (kg)</div>
-    <input
-        type="text"
-        name="weight"
-        pattern="\d{2,3}$"
-        title="Preencha seu peso corretamente (em kg)"
-        value="{{member.weight}}"
+    <div>Instrutor Responsável</div>
+    <div>
+        <select
+        name="responsible_instructor_id"
         required
-    >
-</div>
-<div class="item">
-    <div>Altura (cm)</div>
-    <input
-        type="text"
-        name="height"
-        pattern="\d{2,3}$"
-        title="Preencha sua altura corretamente (em cm)"
-        value="{{member.height}}"
-        required
-    >
-</div>
+        >
+            <option 
+                class="disabled-select"
+                disabled
+                selected
+            >
+                -- Selecionar Opção --
+            </option>
+
+            {% for option in instructorOptions %}
+
+                <option value="{{option.instructor_id}}"
+
+                    {% if member.responsible_instructor_id == option.instructor_id %}
+                        selected
+                    {% endif %}
+
+                >
+                    {{option.instructor_name}}
+                </option>
+
+            {% endfor %}
+
+        </select>
+    </div>
 <button
     class="primary-color-button"
     type="submit"

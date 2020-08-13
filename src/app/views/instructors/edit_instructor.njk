@@ -19,14 +19,14 @@
             <div class="details">
                 <form id="edit-form" method="POST" action="/instructors/edit_instructor?_method=PUT">
                     <h3>Editar Instrutor</h3>
-                    
-                    {% include "./includes/form_fields.njk" %}
 
                     <input
                         type="hidden"
                         name="id"
                         value="{{instructor.id}}"
                     >
+                    
+                    {% include "./includes/form_fields.njk" %}
                 </form>
 
                 <form id="fake-form">

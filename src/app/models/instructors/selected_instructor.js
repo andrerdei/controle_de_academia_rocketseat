@@ -8,20 +8,18 @@ const db = require('../../../config/db')
 module.exports = {
     showSelectedInstructor(data, callback) {
         const query = `
-            SELECT * FROM instructors
-            WHERE id = $1
+            SELECT instructors.*, COUNT(members) AS total_students
+            FROM instructors
+            LEFT JOIN members ON (members.responsible_instructor_id = instructors.id)
+            GROUP BY instructors.id
         `
 
-        const values = [
-            data.id
-        ]
-
-        db.query(query, values, (err, results) => {
+        db.query(query, (err, results) => {
             if(err) {
                 throw `Erro no banco de dados ${err}`
             }
 
-            callback(results.rows[0])
+            callback(results.rows)
         })
     }
 }

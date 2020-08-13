@@ -8,8 +8,11 @@ const db = require('../../../config/db')
 module.exports = {
     showInstructorsList(callback) {
         const query = `
-            SELECT * FROM instructors
-            ORDER BY name ASC
+            SELECT instructors.*, COUNT(members) AS total_students
+            FROM instructors
+            LEFT JOIN members ON (members.responsible_instructor_id = instructors.id)
+            GROUP BY instructors.id
+            ORDER BY total_students DESC
         `
         
         db.query(query, (err, results) => {

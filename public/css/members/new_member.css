@@ -4,7 +4,7 @@
     background-color: white;
     margin: 2em auto;
     width: 60vw;
-    min-height: 60vh;
+    min-height: 100vh;
     box-shadow: 10px 10px 15px 3px rgba(0,0,0,.5);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -80,7 +80,7 @@
 }
 
 .details h3{
-    color: var(--primary-color);
+    color: var(--quaternary-color);
     font-size: 90%;
     font-weight: bold;
     text-transform: uppercase;
@@ -90,7 +90,7 @@
 .details button{
     width: 100%;
     color: white;
-    background-color: var(--primary-color);
+    background-color: var(--quaternary-color);
     font-size: 100%;
     font-weight: bold;
     margin-top: 2em;
@@ -145,7 +145,8 @@
     box-shadow: 1px 1px 2px 1px rgba(0,0,0,.2);
 }
 
-.details .item input{
+.details .item input,
+.details .item select{
     width: 95%;
     color: #555;
     font-size: 100%;
@@ -154,6 +155,10 @@
     padding: .3em .5em;
     box-shadow: 0px 0px 2px .5px rgba(200,200,120,.7);
     border: none
+}
+
+.details .item select{
+    width: 98%;
 }
 
 .details .item input[type="radio"]{

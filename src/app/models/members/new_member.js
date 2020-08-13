@@ -6,6 +6,23 @@ const db = require('../../../config/db')
 // Exportando Módulo Com o Model
 
 module.exports = {
+    selectResponsibleInstructorOptions(callback) {
+        const query = `
+            SELECT instructors.id As instructor_id, instructors.name As instructor_name
+            FROM instructors
+        `
+
+        db.query(query, (err, results) => {
+            if(err) {
+                throw `Erro no banco de dados ${err}`
+            }
+
+            console.log(results.rows)
+
+            callback(results.rows)
+        })
+    },
+
     createNewMember(data, callback) {
         const query = `
             INSERT INTO members(
@@ -14,13 +31,14 @@ module.exports = {
                 email,
                 birth,
                 gender,
-                blood_type,
                 weight,
                 height,
+                blood_type,
+                responsible_instructor_id,
                 created_at
             )
 
-            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
         `
 
         const values = [
@@ -29,9 +47,10 @@ module.exports = {
             data.email,
             data.birth,
             data.gender,
-            data.blood_type,
             data.weight,
             data.height,
+            data.blood_type,
+            data.responsible_instructor_id,
             data.created_at
         ]
 

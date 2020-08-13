@@ -9,7 +9,11 @@ const {dateConverter} = require('../../../lib/utils/date_converter')
 
 module.exports = {
     index (req, res) {
-        return res.render("members/new_member")
+        newMemberModel.selectResponsibleInstructorOptions((data) => {
+            const instructorOptions = data
+
+            return res.render("members/new_member", {instructorOptions: instructorOptions})
+        })
     },
 
     create(req, res) {
@@ -30,6 +34,7 @@ module.exports = {
 
         bodyData.weight = Number(bodyData.weight)
         bodyData.height = Number(bodyData.height)
+        bodyData.responsible_instructor_id = Number(bodyData.responsible_instructor_id)
         bodyData.created_at = dateConverter(created_at).dashFormattedDateReverse
 
         newMemberModel.createNewMember(bodyData, () => {

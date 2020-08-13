@@ -19,7 +19,9 @@ module.exports = {
         const paramsData = req.params
 
         selectedInstructorModel.showSelectedInstructor(paramsData, (data) => {
-            const findInstructor = data
+            const findInstructor = data.find((instructor) => {    
+                return instructor.id == paramsData.id
+            })
 
             if(!findInstructor) {
                 return res.send("Instrutor não encontrado, tente novamente")
@@ -32,6 +34,7 @@ module.exports = {
                 birth: dateConverter(findInstructor.birth).slashFormattedDate,
                 gender: genderConverter(findInstructor.gender),
                 services: infoCommaSplitter(findInstructor.services),
+                total_students: Number(findInstructor.total_students),
                 created_at: dateConverter(findInstructor.created_at).slashFormattedDate
             }
 

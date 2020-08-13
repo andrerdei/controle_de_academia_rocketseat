@@ -6,9 +6,11 @@ const db = require('../../../config/db')
 // Exportando Módulo Com o Model
 
 module.exports = {
-    showmembersList(callback) {
+    showMembersList(callback) {
         const query = `
-            SELECT * FROM members
+            SELECT members.*, instructors.name AS instructor_name
+            FROM members
+            LEFT JOIN instructors ON (instructors.id = members.responsible_instructor_id)
             ORDER BY name ASC
         `
         

@@ -8,8 +8,10 @@ const db = require('../../../config/db')
 module.exports = {
     showSelectedMember(data, callback) {
         const query = `
-            SELECT * FROM members
-            WHERE id = $1
+            SELECT members.*, instructors.name AS instructor_name
+            FROM members
+            LEFT JOIN instructors ON (instructors.id = members.responsible_instructor_id)
+            WHERE members.id = $1
         `
 
         const values = [
