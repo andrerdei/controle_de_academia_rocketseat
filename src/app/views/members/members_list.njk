@@ -12,9 +12,31 @@
 {% block body_main_content %}
     <main>
         <section class="card">
+            <div class="create-and-filter">
+                <a 
+                    class="new-member-button"
+                    href="/members/new"
+                >
+                    Novo Membro
+                </a>
+                <div class="list-filter-div">
+                    <input 
+                        type="text"
+                        name="filter"
+                        placeholder="Digite o nome do membro"
+                    >
+
+                    <span>
+                        Busca
+                    </span>
+                </div>
+            </div>
 
             {% for member in members %}
-                <a href="/members/selected_member/{{member.id}}">
+                <a 
+                    class="major-item-link"
+                    href="/members/selected_member/{{member.id}}"
+                >
                     <ul class="details">
                         <li class="item avatar">
                             <img
@@ -22,25 +44,25 @@
                                 alt="Imagem do Membro"
                             >
                         </li>
-                        <li class="item text-info">
+                        <li class="item text-info item-name">
                             <span>Nome:</span>
-                            {{member.name}}
+                            <p>{{member.name}}</p>
                         </li>
                         <li class="item text-info">
                            <span>Instrutor:</span>
-                           {{member.instructor_name}}
+                           <p>{{member.instructor_name}}</p>
                         </li>
                         <li class="item text-info">
                            <span>Idade:</span>
-                           {{member.age}}
+                           <p>{{member.age}}</p>
                         </li>
                         <li class="item text-info">
                            <span>Altura:</span>
-                           {{member.height}} cm
+                           <p>{{member.height}} cm</p>
                         </li>
                         <li class="item text-info">
                            <span>Peso:</span>
-                           {{member.weight}} kg
+                           <p>{{member.weight}} kg</p>
                         </li>
                     </ul>
                 </a>
@@ -49,3 +71,9 @@
         </section>
     </main>
 {% endblock body_main_content%}
+
+{% block scripts_content %}
+    <script>
+        toggleInvisibleClassByFilter()
+    </script>
+{% endblock scripts_content %}

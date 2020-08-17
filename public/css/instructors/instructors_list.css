@@ -11,17 +11,94 @@
     align-items: center;
 }
 
-.card a{
+.card .create-and-filter{
+    width: 65%;
+    margin-top: 7em;
+    margin-bottom: 1em;
+    display: grid;
+    gap: 2em;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-items: initial;
+    box-sizing: border-box;
+}
+
+.card .major-item-link{
     width: 65%;
     display: block;
     margin: 3em;
     padding: 0;
     border-radius: 15px;
-    transition: .2s ease-in-out
+    transition: .2s ease-in-out;
 }
 
-.card a:first-child {
-    margin-top: 10em;
+.card .invisible-major-item-link{
+   display: none;
+}
+
+
+/* Create and Filter Div */
+
+.create-and-filter .new-instructor-button{
+    width: 40%;
+    color: white;
+    background: linear-gradient(to bottom right,
+        rgb(228, 167, 54) 0%,
+        rgb(236, 163, 29) 40%,
+        rgb(224, 126, 6) 90%);
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.5);
+    border-radius: 15px;
+    box-shadow: 1px 1px 2px 1px rgba(0,0,0,.5);
+    margin-left: 2em;
+    padding: .5em;
+    box-sizing: border-box;
+}
+
+@media(hover: hover) {
+    .create-and-filter .new-instructor-button:hover{
+        box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,.5);
+    }
+}
+
+.create-and-filter .list-filter-div{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: end;
+    margin-left: -2em;
+}
+
+.create-and-filter .list-filter-div input{
+    width: 70%;
+    min-height: 2.5em;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 1px solid lightgrey;
+    margin-right: .5em;
+    padding: .5em;
+    box-sizing: border-box;
+}
+
+.create-and-filter .list-filter-div span{
+    width: 20%;
+    color: white;
+    background: linear-gradient(to bottom right,
+        rgb(228, 167, 54) 0%,
+        rgb(236, 163, 29) 40%,
+        rgb(224, 126, 6) 90%);
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.5);
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    margin: 0;
+    padding: .2em;
+    box-sizing: border-box;
 }
 
 

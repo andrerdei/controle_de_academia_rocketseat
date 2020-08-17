@@ -42,3 +42,22 @@ function toggleDeleteModalClasses() {
         button.classList.toggle('show-modal-buttons')
     })
 }
+
+function toggleInvisibleClassByFilter() {
+    const listFilter = document.querySelector('.list-filter-div input')
+
+    listFilter.addEventListener('input', () => {
+        const majorItemArray = document.querySelectorAll('.major-item-link')
+        const itemNameArray = document.querySelectorAll('.major-item-link .details .item-name p')
+        const regExp = new RegExp(`^${listFilter.value}`, 'i')
+        
+        for(let i = 0; i < majorItemArray.length; i++) {
+            const majorItem = majorItemArray[i]
+            const itemName = itemNameArray[i]
+
+            regExp.test(itemName.textContent)
+                ? majorItem.classList.remove('invisible-major-item-link')
+                : majorItem.classList.add('invisible-major-item-link')
+        }
+    })
+}
